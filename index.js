@@ -4,7 +4,9 @@ const fs = require("fs");
 const path = require("path");
 const color = require("colors");
 const express = require("express");
+const reqfilter = require('./middleware/middleware')
 
+const route = express.Router()
 const app = express();
 // EJS Template Engine
 app.set("view engine", "ejs");
@@ -132,10 +134,8 @@ app.get('/login',(req,res)=>{
     res.render("Login")
 }) */
 
-
 // Middleware
-
-const reqfilter=(req,res,next)=>{
+/* const reqfilter=(req,res,next)=>{
   if(!req.query.age){
     res.send("Please Provide age")
   }else if(req.query.age <18){
@@ -145,16 +145,27 @@ const reqfilter=(req,res,next)=>{
     console.log('Middleware is Running');
     next()
   }
-}
+} */
 
-app.use(reqfilter)
+// Application Level Middleware
+/* app.use(reqfilter) */
+route.use(reqfilter)
 
-app.get('/',(req,res)=>{
-  res.send('Welcome to Home Page')
-})
-app.get('/users',(req,res)=>{
-  res.send('Welcome to Users Page')
-})
+app.get("/", (req, res) => {
+  res.send("Welcome to Home Page");
+});
+// Route Level Middleware
+app.get("/user", reqfilter, (req, res) => {
+  res.send("Welcome to Users Page");
+});
+// Apply Middleware in the group of route
+route.get('/about', (req, res) => {
+  res.send("Welcome to About Page");
+});
+route.get('/contact', (req, res) => {
+  res.send("Welcome to Contact Page");
+});
 
+app.use('/',route)
 
 app.listen(4000);
