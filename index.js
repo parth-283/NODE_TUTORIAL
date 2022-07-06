@@ -67,16 +67,34 @@ const filepath = `${dirpath}/crud.txt`; */
 // **{DELETE}**
 /* fs.unlinkSync(`${dirpath}/Fruit.txt`) */
 
+
+
+// Express Js
+// **HTML**
 app.get("", (req, res) => {
-  res.send("Hello, This is Home Page");
+  res.send(
+    `<h1>Hello, This is Home Page</h1><a href="/about">Go To About Page</a>`
+  );
 });
 
 app.get("/about", (req, res) => {
-    res.send("Hello, This is About Page");
-  });
+  res.send(
+    `<input type="text" placeholder="User Name"/><button>Click Me</button><br/><a href="/">Go To Home Page</a>`
+  );
+});
 
-  app.get("/help", (req, res) => {
-    res.send("Hello, This is Help Page");
-  });
+// **JSON**
+app.get("/help", (req, res) => {
+  res.send([
+    {
+      name: "Parth",
+      email: "Parth@123.com",
+    },
+    {
+      name: "Ravi",
+      email: "Ravi@123.com",
+    },
+  ]);
+});
 
-  app.listen(4000)
+app.listen(4000);
