@@ -161,7 +161,7 @@ app.get("/user", reqfilter, (req, res) => {
 // Apply Middleware in the group of route
 route.get('/about', (req, res) => {
   res.send("Welcome to About Page");
-});
+}); 
 route.get('/contact', (req, res) => {
   res.send("Welcome to Contact Page");
 });
