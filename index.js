@@ -4,6 +4,8 @@ const fs = require("fs");
 const path = require("path");
 const color = require("colors");
 const express = require("express");
+
+
 const app = express();
 
 // Make Simple API
@@ -71,7 +73,7 @@ const filepath = `${dirpath}/crud.txt`; */
 
 // Express Js
 // **HTML**
-app.get("", (req, res) => {
+/* app.get("", (req, res) => {
   res.send(
     `<h1>Hello, This is Home Page</h1><a href="/about">Go To About Page</a>`
   );
@@ -81,10 +83,10 @@ app.get("/about", (req, res) => {
   res.send(
     `<input type="text" placeholder="User Name"/><button>Click Me</button><br/><a href="/">Go To Home Page</a>`
   );
-});
+}); */
 
 // **JSON**
-app.get("/help", (req, res) => {
+/* app.get("/help", (req, res) => {
   res.send([
     {
       name: "Parth",
@@ -95,6 +97,12 @@ app.get("/help", (req, res) => {
       email: "Ravi@123.com",
     },
   ]);
-});
+}); */
+
+
+// Make Html Page
+const publicpath = path.join(__dirname,'public')
+
+app.use(express.static(publicpath))
 
 app.listen(4000);
