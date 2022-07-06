@@ -118,7 +118,7 @@ app.get("*", (req, res) => {
 }); */
 
 // EJS Template Engine
-app.get("/profile", (req, res) => {
+/* app.get("/profile", (req, res) => {
   const User = {
     name: "Parth Kathiriya",
     email: "parth@123.com",
@@ -128,9 +128,33 @@ app.get("/profile", (req, res) => {
 
   res.render("profile", { User });
 });
-
-
 app.get('/login',(req,res)=>{
     res.render("Login")
+}) */
+
+
+// Middleware
+
+const reqfilter=(req,res,next)=>{
+  if(!req.query.age){
+    res.send("Please Provide age")
+  }else if(req.query.age <18){
+    res.send("You Can't Access This Page")
+  }
+  else{
+    console.log('Middleware is Running');
+    next()
+  }
+}
+
+app.use(reqfilter)
+
+app.get('/',(req,res)=>{
+  res.send('Welcome to Home Page')
 })
+app.get('/users',(req,res)=>{
+  res.send('Welcome to Users Page')
+})
+
+
 app.listen(4000);
