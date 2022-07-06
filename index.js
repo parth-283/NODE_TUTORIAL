@@ -128,9 +128,9 @@ app.get("/profile", (req, res) => {
 
   res.render("profile", { User });
 });
-
-
 app.get('/login',(req,res)=>{
     res.render("Login")
 })
+
+
 app.listen(4000);
