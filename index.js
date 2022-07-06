@@ -119,12 +119,18 @@ app.get("*", (req, res) => {
 
 // EJS Template Engine
 app.get("/profile", (req, res) => {
-    const User = {
-        name:'Parth Kathiriya',
-        email:"parth@123.com",
-        city:'Surat'
-    }
-  res.render("profile",{User});
+  const User = {
+    name: "Parth Kathiriya",
+    email: "parth@123.com",
+    city: "Surat",
+    skils: ['php','js','react','node'],
+  };
+
+  res.render("profile", { User });
 });
 
+
+app.get('/login',(req,res)=>{
+    res.render("Login")
+})
 app.listen(4000);
