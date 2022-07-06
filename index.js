@@ -5,7 +5,6 @@ const path = require("path");
 const color = require("colors");
 const express = require("express");
 
-
 const app = express();
 
 // Make Simple API
@@ -69,8 +68,6 @@ const filepath = `${dirpath}/crud.txt`; */
 // **{DELETE}**
 /* fs.unlinkSync(`${dirpath}/Fruit.txt`) */
 
-
-
 // Express Js
 // **HTML**
 /* app.get("", (req, res) => {
@@ -99,10 +96,22 @@ app.get("/about", (req, res) => {
   ]);
 }); */
 
-
 // Make Html Page
-const publicpath = path.join(__dirname,'public')
+/* const publicpath = path.join(__dirname,'public')
+app.use(express.static(publicpath)) */
 
-app.use(express.static(publicpath))
-
+// Remove Extension and Make 404 Page
+const publicpath = path.join(__dirname, "public");
+app.get("", (req, res) => {
+  res.sendFile(`${publicpath}/index.html`);
+});
+app.get("/about", (req, res) => {
+  res.sendFile(`${publicpath}/about.html`);
+});
+app.get("/help", (req, res) => {
+  res.sendFile(`${publicpath}/help.html`);
+});
+app.get("*", (req, res) => {
+  res.sendFile(`${publicpath}/404.html`);
+});
 app.listen(4000);
