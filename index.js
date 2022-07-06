@@ -3,6 +3,8 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 const color = require("colors");
+const express = require("express");
+const app = express();
 
 // Make Simple API
 /* http
@@ -65,5 +67,16 @@ const filepath = `${dirpath}/crud.txt`; */
 // **{DELETE}**
 /* fs.unlinkSync(`${dirpath}/Fruit.txt`) */
 
+app.get("", (req, res) => {
+  res.send("Hello, This is Home Page");
+});
 
+app.get("/about", (req, res) => {
+    res.send("Hello, This is About Page");
+  });
 
+  app.get("/help", (req, res) => {
+    res.send("Hello, This is Help Page");
+  });
+
+  app.listen(4000)
