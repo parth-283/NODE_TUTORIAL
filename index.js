@@ -6,6 +6,8 @@ const color = require("colors");
 const express = require("express");
 
 const app = express();
+// EJS Template Engine
+app.set("view engine", "ejs");
 
 // Make Simple API
 /* http
@@ -101,7 +103,7 @@ app.get("/about", (req, res) => {
 app.use(express.static(publicpath)) */
 
 // Remove Extension and Make 404 Page
-const publicpath = path.join(__dirname, "public");
+/* const publicpath = path.join(__dirname, "public");
 app.get("", (req, res) => {
   res.sendFile(`${publicpath}/index.html`);
 });
@@ -113,5 +115,16 @@ app.get("/help", (req, res) => {
 });
 app.get("*", (req, res) => {
   res.sendFile(`${publicpath}/404.html`);
+}); */
+
+// EJS Template Engine
+app.get("/profile", (req, res) => {
+    const User = {
+        name:'Parth Kathiriya',
+        email:"parth@123.com",
+        city:'Surat'
+    }
+  res.render("profile",{User});
 });
+
 app.listen(4000);
