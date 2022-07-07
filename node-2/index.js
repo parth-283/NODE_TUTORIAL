@@ -1,17 +1,11 @@
 const color = require("colors");
-const { MongoClient } = require("mongodb");
-const database = "e-comm";
+const dbConnection = require("./mongodb");
 
-const url = "mongodb://localhost:27017";
 
-const client = new MongoClient(url);
-
-async function getData() {
-  let result = await client.connect();
-  let db = result.db(database);
-  let collection = db.collection("products");
-  let response = await collection.find({}).toArray();
-  console.log(response);
-}
-
-getData();
+const data = async () => {
+    console.log("Main Function Called");
+    let data1 = await dbConnection();
+    MainData = await data1.find().toArray();
+    console.log(MainData);
+};
+data();
