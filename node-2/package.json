@@ -1,0 +1,33 @@
+{
+  "name": "2",
+  "version": "1.0.0",
+  "description": "This is Secound Tutorial for MongoDB With Node Js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parth-283/NODE_TUTORIAL.git"
+  },
+  "keywords": [
+    "node",
+    "tutorial",
+    "nodejs",
+    "mongodb"
+  ],
+  "author": "Parth Kathiriya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/parth-283/NODE_TUTORIAL/issues"
+  },
+  "homepage": "https://github.com/parth-283/NODE_TUTORIAL#readme",
+  "dependencies": {
+    "chalk": "^5.0.1",
+    "colors": "^1.4.0",
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "mongodb": "^4.7.0",
+    "simple-node-logger": "^21.8.12"
+  }
+}
