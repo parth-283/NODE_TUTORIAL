@@ -41,5 +41,6 @@ const findInDB = async () => {
   const productModel = mongoose.model("products", productSch);
   let data = await productModel.find({name:"m 10",price:1000})
   console.log(data);
-}
+} 
+
 findInDB()
